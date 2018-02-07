@@ -48,6 +48,7 @@ int get_processing_time(seller* seller_info){
         default:
             break;
     }
+    return -1;
 }
 
 pair<int,int> findSeat(vector<int>rows){
@@ -256,13 +257,16 @@ int start_simulation() {
 
 
 int main(int argc, char* argv[]) {
-    //num_customers = atoi(argv[1]);
+    if(argc != 2){
+        cout << "Wrong number of arguments!" << endl;
+        return -1;
+    }
+    num_customers = atoi(argv[1]);
     turned_away=0;
     h_customers=0;
     m_customers=0;
     l_customers=0;
     windows_closed = false;
-    num_customers = 15;
     start_simulation();
     print_seating_chart(seat_chart);
     cout<< "Number of H customers = " << h_customers << endl;
